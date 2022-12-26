@@ -18,25 +18,23 @@ class Parser {
         void displayTokens();
 };
 
-void Parser::tokenization(String command) {
+void Parser::tokenization(string command) {
     int j = 0;
     
     if(!tokens.empty()) { tokens.clear(); }
 
-    for(int i = 0; i < command.length()-1; i++) {
+    for(int i = 0; i < command.length(); i++) {
         if(command[i] == ' ') {
-            tokens.push_end(command.substr(j, i));
+            tokens.push_back(command.substr(j, i-j));
+            j = i + 1;
         }
-
-        j = i + 1;
     }
 
-    tokens.push_end(command.substr(j, command.length()));
+    tokens.push_back(command.substr(j, command.length()-j));
 };
 
 void Parser::displayTokens() {
     list<string>::iterator t;
 
-    for(t = tokens.begin(); t != tokens.end(); ++t) { cout << '\t' << *t; }
-    cout << '\n';
+    for(t = tokens.begin(); t != tokens.end(); ++t) { cout << *t << '\n'; }
 };
