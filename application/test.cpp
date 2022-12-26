@@ -9,9 +9,7 @@ using namespace std;
 int main() {
     Visualizer v;
 
-    v.logo();
-    v.credits();
-    v.waiter();
+    v.startup();
 
     return 0;
 };
